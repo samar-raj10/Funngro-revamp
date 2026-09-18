@@ -1,31 +1,37 @@
-import React, { useState } from 'react';
-import { TrendingUp, Target, Users, Zap, CheckCircle2 } from 'lucide-react';
+import React, { useState } from "react";
+import { TrendingUp, Target, Users, Zap, CheckCircle2 } from "lucide-react";
 
 export default function CompanyROICalculator() {
   const [budget, setBudget] = useState(35000);
-  const [goal, setGoal] = useState('content');
+  const [goal, setGoal] = useState("content");
 
   // ROI estimation logic
   const estimatedReach = Math.round((budget * 12.5) / 1000) * 1000;
-  const estimatedSubmissions = Math.round(budget / (goal === 'content' ? 350 : goal === 'app' ? 120 : 80));
-  const creatorTalentCount = Math.min(250, Math.floor(estimatedSubmissions * 0.8));
+  const estimatedSubmissions = Math.round(
+    budget / (goal === "content" ? 350 : goal === "app" ? 120 : 80),
+  );
+  const creatorTalentCount = Math.min(
+    250,
+    Math.floor(estimatedSubmissions * 0.8),
+  );
 
   return (
     <div className="bg-[#091f11] border-2 border-emerald-800/60 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden text-left">
       <div className="absolute -top-12 -right-12 w-48 h-48 bg-funngro-neon/10 rounded-full blur-3xl"></div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        
         {/* Left Input Settings */}
         <div className="lg:col-span-7 space-y-6">
-          
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950 border border-emerald-800 font-mono text-xs text-funngro-neon uppercase tracking-wider font-semibold">
-            <TrendingUp className="w-3.5 h-3.5" /> INTERACTIVE CAMPAIGN ROI ESTIMATOR
+            <TrendingUp className="w-3.5 h-3.5" /> INTERACTIVE CAMPAIGN ROI
+            ESTIMATOR
           </div>
 
           <h3 className="text-2xl sm:text-3xl font-serif-heading font-bold text-white leading-tight">
             Estimate your brand deliverables <br />
-            <span className="font-serif-italic text-funngro-neon">before spending a rupee.</span>
+            <span className="font-serif-italic text-funngro-neon">
+              before spending a rupee.
+            </span>
           </h3>
 
           {/* Goal Selector */}
@@ -35,31 +41,31 @@ export default function CompanyROICalculator() {
             </label>
             <div className="grid grid-cols-3 gap-2">
               <button
-                onClick={() => setGoal('content')}
+                onClick={() => setGoal("content")}
                 className={`px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
-                  goal === 'content'
-                    ? 'bg-funngro-neon text-black font-bold shadow-neon-glow'
-                    : 'bg-[#06140b] text-emerald-200 border border-emerald-900 hover:border-emerald-700'
+                  goal === "content"
+                    ? "bg-funngro-neon text-black font-bold shadow-neon-glow"
+                    : "bg-[#06140b] text-emerald-200 border border-emerald-900 hover:border-emerald-700"
                 }`}
               >
                 🎥 Content & Reels
               </button>
               <button
-                onClick={() => setGoal('app')}
+                onClick={() => setGoal("app")}
                 className={`px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
-                  goal === 'app'
-                    ? 'bg-funngro-neon text-black font-bold shadow-neon-glow'
-                    : 'bg-[#06140b] text-emerald-200 border border-emerald-900 hover:border-emerald-700'
+                  goal === "app"
+                    ? "bg-funngro-neon text-black font-bold shadow-neon-glow"
+                    : "bg-[#06140b] text-emerald-200 border border-emerald-900 hover:border-emerald-700"
                 }`}
               >
                 📱 App Installs & QA
               </button>
               <button
-                onClick={() => setGoal('survey')}
+                onClick={() => setGoal("survey")}
                 className={`px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
-                  goal === 'survey'
-                    ? 'bg-funngro-neon text-black font-bold shadow-neon-glow'
-                    : 'bg-[#06140b] text-emerald-200 border border-emerald-900 hover:border-emerald-700'
+                  goal === "survey"
+                    ? "bg-funngro-neon text-black font-bold shadow-neon-glow"
+                    : "bg-[#06140b] text-emerald-200 border border-emerald-900 hover:border-emerald-700"
                 }`}
               >
                 📊 Surveys & Feedback
@@ -70,19 +76,26 @@ export default function CompanyROICalculator() {
           {/* Budget Slider */}
           <div className="space-y-3 pt-2">
             <div className="flex justify-between items-center font-mono text-xs text-emerald-200">
-              <span className="font-semibold uppercase tracking-wider">2. Campaign Budget</span>
+              <label
+                htmlFor="brand-budget"
+                className="font-semibold uppercase tracking-wider"
+              >
+                2. Campaign Budget
+              </label>
               <span className="text-funngro-neon font-bold text-sm bg-emerald-950 px-2.5 py-1 rounded border border-emerald-800">
-                ₹{budget.toLocaleString('en-IN')}
+                ₹{budget.toLocaleString("en-IN")}
               </span>
             </div>
 
             <input
+              id="brand-budget"
               type="range"
               min="15000"
               max="200000"
               step="5000"
               value={budget}
               onChange={(e) => setBudget(Number(e.target.value))}
+              aria-label="Campaign budget"
               className="w-full h-2 bg-[#06140b] rounded-lg appearance-none cursor-pointer accent-funngro-neon"
             />
             <div className="flex justify-between text-[10px] font-mono text-emerald-300">
@@ -91,34 +104,44 @@ export default function CompanyROICalculator() {
               <span>₹2,00,000+ (Scale)</span>
             </div>
           </div>
-
         </div>
 
         {/* Right Output Box */}
         <div className="lg:col-span-5 bg-[#06140b] border border-emerald-800/80 rounded-2xl p-6 text-center space-y-4 shadow-inner">
-          
           <span className="font-mono text-xs text-emerald-300 font-semibold uppercase tracking-widest block">
             ESTIMATED CAMPAIGN DELIVERABLES
           </span>
 
           <div className="my-2">
             <div className="text-4xl font-serif-italic font-extrabold text-funngro-neon text-glow">
-              {estimatedSubmissions.toLocaleString('en-IN')}
+              {estimatedSubmissions.toLocaleString("en-IN")}
             </div>
             <div className="font-mono text-xs text-emerald-200 uppercase font-semibold mt-1">
-              {goal === 'content' ? 'Verified Reels & Videos' : goal === 'app' ? 'Verified Installs & Reviews' : 'Completed Survey Hits'}
+              {goal === "content"
+                ? "Verified Reels & Videos"
+                : goal === "app"
+                  ? "Verified Installs & Reviews"
+                  : "Completed Survey Hits"}
             </div>
           </div>
 
           <div className="pt-2 grid grid-cols-2 gap-3 text-left font-mono text-[11px] border-t border-emerald-900/60">
             <div className="bg-[#0b2214] p-2.5 rounded-lg border border-emerald-900/40">
-              <span className="text-emerald-300 block text-[10px]">ESTIMATED GEN-Z REACH</span>
-              <strong className="text-white text-sm">{estimatedReach.toLocaleString('en-IN')}+ Impressions</strong>
+              <span className="text-emerald-300 block text-[10px]">
+                ESTIMATED GEN-Z REACH
+              </span>
+              <strong className="text-white text-sm">
+                {estimatedReach.toLocaleString("en-IN")}+ Impressions
+              </strong>
             </div>
 
             <div className="bg-[#0b2214] p-2.5 rounded-lg border border-emerald-900/40">
-              <span className="text-emerald-300 block text-[10px]">VERIFIED TALENT MATCHE</span>
-              <strong className="text-funngro-neon text-xs">{creatorTalentCount}+ Creators</strong>
+              <span className="text-emerald-300 block text-[10px]">
+                VERIFIED TALENT MATCHE
+              </span>
+              <strong className="text-funngro-neon text-xs">
+                {creatorTalentCount}+ Creators
+              </strong>
             </div>
           </div>
 
@@ -128,9 +151,7 @@ export default function CompanyROICalculator() {
           >
             Launch This Campaign →
           </a>
-
         </div>
-
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -8,7 +8,7 @@
   body {
     background-color: #06120a;
     color: #e2f0e6;
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
     overflow-x: hidden;
   }
 
@@ -32,18 +32,39 @@
   .text-glow {
     text-shadow: 0 0 15px rgba(0, 230, 118, 0.4);
   }
-  
+
+  .bg-radial-hero {
+    background-image:
+      radial-gradient(
+        circle at top left,
+        rgba(0, 230, 118, 0.12),
+        transparent 32%
+      ),
+      linear-gradient(180deg, #06120a 0%, #06120a 100%);
+    background-color: #06120a;
+  }
+
+  .bg-radial-gradient-emerald {
+    background-image:
+      radial-gradient(circle at top, rgba(0, 230, 118, 0.14), transparent 30%),
+      linear-gradient(180deg, #05140b 0%, #06120a 100%);
+    background-color: #05140b;
+  }
+
   .font-serif-italic {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
     font-style: italic;
   }
 
   .font-serif-heading {
-    font-family: 'Playfair Display', serif;
+    font-family: "Playfair Display", serif;
   }
 
   .bg-noise {
-    background-image: radial-gradient(rgba(0, 230, 118, 0.05) 1px, transparent 0);
+    background-image: radial-gradient(
+      rgba(0, 230, 118, 0.05) 1px,
+      transparent 0
+    );
     background-size: 24px 24px;
   }
 }
