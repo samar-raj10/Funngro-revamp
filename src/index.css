@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #06120a;
+    color: #e2f0e6;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #06120a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #173b22;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00e676;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 15px rgba(0, 230, 118, 0.4);
+  }
+  
+  .font-serif-italic {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+  }
+
+  .font-serif-heading {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .bg-noise {
+    background-image: radial-gradient(rgba(0, 230, 118, 0.05) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+}
